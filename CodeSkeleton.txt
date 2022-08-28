@@ -1,0 +1,71 @@
+Option Explicit
+
+Sub OptimalCalc()
+
+    'Define Problem related input variables
+    Dim sSales As Single
+    Dim sSmurfPresent As String
+
+    'Define calculation specific variables
+    'This includes multipliers, total/subtotal variables, and extra variables
+    'Final output
+    Dim sOptimalOrderQuantity As Single
+
+    'Define validation and flag pattern variables
+    Dim tIsInputOk As String
+    Dim tUncheckedUserInput As String
+
+    'Clear previous output, errors messages and outputs
+    Cells(12, 2) = ""
+    Cells(3, 3) = ""
+    Cells(6, 3) = ""
+
+    ' Input
+    'Validation systems for each input
+    'Validation system includes: recieving inputs, normalizing variables, and converting inputs into their according variable.
+    ' Validate Sales
+    tUncheckedUserInput = Cells(3,2)
+    tUncheckedUserInput = Trim(tUncheckedUserInput)
+    If Not IsNumeric(tUncheckedUserInput) Then
+        'Not numeric, show error.
+        Cells(3, 3) = "Sorry, sales cost must be a number."
+        Cells(3, 3).Font.Color = vbRed
+        tIsInputOk = "no"
+    Else
+        'Is numeric.
+        sSales = tUncheckedUserInput
+        If sSales < 0 Then
+            Cells(3, 3) = "Sorry, sales cost cannot be negative."
+            Cells(3, 3).Font.Color = vbRed
+            tIsInputOk = "no"
+        End If
+    End If
+
+    'Validate Smurf Present
+    tUncheckedUserInput = Cells(6, 2)
+    tUncheckedUserInput = Trim(UCase(tUncheckedUserInput))
+    If tUncheckedUserInput <> "Y" and tUncheckedUserInput <> "N" Then
+        Cells(6, 3) = "Sorry, smurf present must be Y or N."
+        Cells(6, 3).Font.Color = vbRed
+        tIsInputOk = "no"
+        End
+    End If
+
+    'Final flag pattern confirmation
+    'Did anything go wrong?
+    If tIsInputOk = "no" Then
+        End
+    End If
+
+    ' Processing
+    'Initialize all variables if possible here, some variables will be initialized after main computation process
+
+    'Main calculations
+
+    'Possible Post-Main-calculation systems
+
+    ' Output
+    'Final output
+    Cells(12, 2) = FinalOutput
+
+End Sub
